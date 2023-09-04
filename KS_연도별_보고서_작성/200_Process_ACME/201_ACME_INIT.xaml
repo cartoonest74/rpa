@@ -1,0 +1,178 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ACME_INIT" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_StrArr_workitem_column" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_Str_REST" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_workitem_column" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_workitem_detail" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_workitem_detail" Type="OutArgument(s:String[])" />
+    <x:Property Name="out_StrArr_month_name_eng" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_StrArr_month_name_eng" Type="InArgument(x:String)" />
+    <x:Property Name="in_YearlyReport_save_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_left_brace" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_YearlyReport_brace_except" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_right_brace" Type="InArgument(x:String)" />
+    <x:Property Name="in_Str_new_stauts" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_new_status" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_KS_VENDOR_BodyList" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_KSvendorBodyList" Type="OutArgument(s:String[])" />
+    <x:Property Name="out_Str_previos_year" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:ACME_INIT.in_str_workitem_detail>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_str_workitem_detail>
+  <this:ACME_INIT.in_StrArr_month_name_eng>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_StrArr_month_name_eng>
+  <this:ACME_INIT.in_YearlyReport_save_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_YearlyReport_save_name>
+  <this:ACME_INIT.in_left_brace>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_left_brace>
+  <this:ACME_INIT.in_right_brace>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_right_brace>
+  <this:ACME_INIT.in_Str_new_stauts>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_Str_new_stauts>
+  <this:ACME_INIT.in_KS_VENDOR_BodyList>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_INIT.in_KS_VENDOR_BodyList>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>908,1028</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ACME_INIT_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="24">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ACME_INIT" sap:VirtualizedContainerService.HintSize="473.6,963.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="432,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME INIT START&quot;]" />
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="//out_StrArr_workitem_column = &#xD;&#xA;(WIID,Description,Type,Status,Date) 쉼표로 split해서 배열 생성&#xA;//out_StrArr_workitem_detail =&#xD;&#xA;(TaxID,Name,Address,City) 쉼표로 split해서 배열 생성&#xD;&#xA;&#xA;//out_StrArr_month_name_eng = &#xD;&#xA;(January,February,March,April,May,June,July,August,September,October,November,December) 쉼표로 split해서 배열 생성&#xD;&#xA;&#xA;//out_StrArr_YearlyReport_brace_except = &#xD;&#xA;&quot;Report-{TaxID}-{Year}-{Month}&quot; 중괄호로 split해서 배열 생성&#xD;&#xA;&#xA;//out_StrArr_new_status = &#xD;&#xA;(Open,Rejected,Completed) 쉼표로 split해서 배열 생성&#xD;&#xA;&#xA;//out_StrArr_KSvendorBodyList = &#xD;&#xA;(No.,TaxID,Name,Address,City,FilePath) 쉼표로 split해서 배열생성&#xA;&#xA;//out_Str_previos_year = 전년도" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,604.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_workitem_column]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_str_workitem_column.Trim.Split(in_Str_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_workitem_detail]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_str_workitem_detail.Trim.Split(in_Str_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_month_name_eng]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_StrArr_month_name_eng.Trim.Split(in_Str_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_YearlyReport_brace_except]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_YearlyReport_save_name.ToString.Trim.Split({in_left_brace, in_right_brace},StringSplitOptions.RemoveEmptyEntries)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_new_status]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_Str_new_stauts.Split(in_Str_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_KSvendorBodyList]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_KS_VENDOR_BodyList.ToString.Trim.Split(in_Str_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_Str_previos_year]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.addYears(-1).ToString("yyyy").Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="432,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ACME INIT END&quot;]" />
+  </Sequence>
+</Activity>

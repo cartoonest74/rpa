@@ -1,0 +1,232 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_102_KS_init" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_Str_NowYear" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Str_previosYear" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Str_NowMonth" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Str_previosMonth" Type="OutArgument(x:String)" />
+    <x:Property Name="out_StrArr_template_path" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_str_appropriation_template_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_Execution_template_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_local_finance_template_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_revenue_template_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path0" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path1" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path2" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path3" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path4" Type="InArgument(x:String)" />
+    <x:Property Name="in_KS_file_path5" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_file_path" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_REST" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_Statistics_list_column" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_str_Statistics_list_column" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_KS_tempalte_all_sheets" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_str_KS_tempalte_all_sheets" Type="InArgument(x:String)" />
+    <x:Property Name="out_StrArr_KS_all_sheets_yyyymm" Type="OutArgument(s:String[])" />
+    <x:Property Name="in_KS_all_sheets_yyyymm" Type="InArgument(x:String)" />
+    <x:Property Name="in_Slash" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_yyyyMM_format" Type="InArgument(x:String)" />
+    <x:Property Name="out_str_now_yyyyMM" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:_102_KS_init.in_str_appropriation_template_path>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_appropriation_template_path>
+  <this:_102_KS_init.in_str_Execution_template_path>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_Execution_template_path>
+  <this:_102_KS_init.in_str_local_finance_template_path>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_local_finance_template_path>
+  <this:_102_KS_init.in_str_revenue_template_path>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_revenue_template_path>
+  <this:_102_KS_init.in_KS_file_path0>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path0>
+  <this:_102_KS_init.in_KS_file_path1>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path1>
+  <this:_102_KS_init.in_KS_file_path2>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path2>
+  <this:_102_KS_init.in_KS_file_path3>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path3>
+  <this:_102_KS_init.in_KS_file_path4>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path4>
+  <this:_102_KS_init.in_KS_file_path5>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_file_path5>
+  <this:_102_KS_init.in_str_Statistics_list_column>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_Statistics_list_column>
+  <this:_102_KS_init.in_str_KS_tempalte_all_sheets>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_KS_tempalte_all_sheets>
+  <this:_102_KS_init.in_KS_all_sheets_yyyymm>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_KS_all_sheets_yyyymm>
+  <this:_102_KS_init.in_Slash>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_Slash>
+  <this:_102_KS_init.in_str_yyyyMM_format>
+    <InArgument x:TypeArguments="x:String" />
+  </this:_102_KS_init.in_str_yyyyMM_format>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>899.2,804.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_102_KS_init_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_102_KS_init" sap:VirtualizedContainerService.HintSize="473.6,740" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="432,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;_102_KS_init START&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,381.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_Str_previosYear]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.AddYears(-1).ToString("yyyy")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_Str_NowYear]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.ToString("yyyy")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_Str_previosMonth]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.AddMonths(-1).ToString("MM")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_Str_NowMonth]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.ToString("MM")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_template_path]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[{in_str_appropriation_template_path, in_str_revenue_template_path, in_str_Execution_template_path, in_str_local_finance_template_path}]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_file_path]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[{in_KS_file_path0, in_KS_file_path1, in_KS_file_path2, in_KS_file_path3, in_KS_file_path4, in_KS_file_path5}]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_Statistics_list_column]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_str_Statistics_list_column.split(in_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_KS_tempalte_all_sheets]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_str_KS_tempalte_all_sheets.split(in_REST.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[out_StrArr_KS_all_sheets_yyyymm]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_KS_all_sheets_yyyymm.split(in_Slash.ToCharArray)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_str_now_yyyyMM]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.ToString(in_str_yyyyMM_format)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="432,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;_102_KS_init END&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,148 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="test2" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="899.2,885.6" sap2010:WorkflowViewState.IdRef="test2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="26">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="test2" sap:VirtualizedContainerService.HintSize="394.4,820.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dic_config" />
+      <Variable x:TypeArguments="x:String" Name="Str_NowYear" />
+      <Variable x:TypeArguments="x:String" Name="Str_previousYear" />
+      <Variable x:TypeArguments="x:String" Name="Str_NowMonth" />
+      <Variable x:TypeArguments="x:String" Name="Str_previosMonth" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_template_path" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_file_path" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_budget_excel_coulmns" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_Statictics_list_columns" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_KS_template_all_sheets" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_KS_all_sheets_yyyymm" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Dic_sheets" />
+      <Variable x:TypeArguments="x:String" Name="str_now_yyyyMM" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 001_CONFIG_EXCEL_READ workflow" sap:VirtualizedContainerService.HintSize="352.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="001_CONFIG_EXCEL_READ.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_config_excel_url">C:\RPA\재무_KS_재정통계자료작성\Data\Config_TypeA.xlsx</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dic_config">[dic_config]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 102_KS_init workflow" sap:VirtualizedContainerService.HintSize="352.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="100_Process KS\102_KS_init.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Str_NowYear">[Str_NowYear]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Str_previosYear">[Str_previousYear]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Str_NowMonth">[Str_NowMonth]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Str_previosMonth">[Str_previosMonth]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_template_path">[StrArr_template_path]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_appropriation_template_path">[dic_config("appropriation_template_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_Execution_template_path">[dic_config("Execution_template_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_local_finance_template_path">[dic_config("local_finance_template_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_revenue_template_path">[dic_config("revenue_template_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path0">[dic_config("KS_file_path0").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path1">[dic_config("KS_file_path1").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path2">[dic_config("KS_file_path2").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path3">[dic_config("KS_file_path3").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path4">[dic_config("KS_file_path4").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_file_path5">[dic_config("KS_file_path5").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_file_path">[StrArr_file_path]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_REST">[dic_config("Rest").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_Statistics_list_column">[StrArr_Statictics_list_columns]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_Statistics_list_column">[dic_config("Statistics_list_column").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_KS_tempalte_all_sheets">[StrArr_KS_template_all_sheets]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_KS_tempalte_all_sheets">[dic_config("KS_tempalte_all_sheets").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_KS_all_sheets_yyyymm">[StrArr_KS_all_sheets_yyyymm]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_KS_all_sheets_yyyymm">[dic_config("KS_all_sheets_yyyymm").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Slash">[dic_config("slash").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_yyyyMM_format">[dic_config("yyyyMM_format").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_now_yyyyMM">[str_now_yyyyMM]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 113_KS_dictionary_sheet workflow" sap:VirtualizedContainerService.HintSize="352.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="100_Process KS\113_KS_dictionary_sheet.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Dic_sheet">[Dic_sheets]</OutArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_KS_tempalte_all_sheets">[StrArr_KS_template_all_sheets]</InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_KS_all_sheets_yyyymm">[StrArr_KS_all_sheets_yyyymm]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 112_KS_file_copy workflow" sap:VirtualizedContainerService.HintSize="352.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="100_Process KS\112_KS_file_copy.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_result_path">[dic_config("KS_result_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_back_slash">[dic_config("back_slash").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_template">[dic_config("Template_eng").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_template_path">[StrArr_template_path]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Dic_Sheets">[Dic_sheets]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Rest">[dic_config("Rest").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_now_yyyyMM">[str_now_yyyyMM.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_yyyyMM_format">[dic_config("yyyyMM_format").ToString.Trim]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 114_KS_result_title_edit workflow" sap:VirtualizedContainerService.HintSize="352.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="100_Process KS\114_KS_result_title_edit.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_KS_all_sheets_yyyymm">[StrArr_KS_all_sheets_yyyymm]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_yyyyMM_format">[dic_config("yyyyMM_format").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_now_yyyyMM">[str_now_yyyyMM]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_result_path">[dic_config("KS_result_path").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_B2">[dic_config("B2_cell").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_rectangle">[dic_config("rectangle").ToString.Trim]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

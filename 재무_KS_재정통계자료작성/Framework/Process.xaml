@@ -1,0 +1,803 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_str_calssfication" Type="InArgument(x:String)" />
+    <x:Property Name="in_Greater_Than_Sign" Type="InArgument(x:String)" />
+    <x:Property Name="in_slash" Type="InArgument(x:String)" />
+    <x:Property Name="in_underscore" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_finacitialName" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_filePath_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_staticTerm_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrArr_year" Type="InArgument(s:String[])" />
+    <x:Property Name="in_str_now_yyyyMM" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_topClick_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_regionGov_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_TransactionItem_etc_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_yearEdit_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_sheetName_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_result_filePath_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_quest_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_list_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_etc_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_condition_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_resultCell_name" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.in_str_calssfication>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_calssfication>
+  <this:Process.in_Greater_Than_Sign>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_Greater_Than_Sign>
+  <this:Process.in_underscore>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_underscore>
+  <this:Process.in_str_finacitialName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_finacitialName>
+  <this:Process.in_str_filePath_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_filePath_name>
+  <this:Process.in_str_staticTerm_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_staticTerm_name>
+  <this:Process.in_StrArr_year>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:Process.in_StrArr_year>
+  <this:Process.in_str_now_yyyyMM>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_now_yyyyMM>
+  <this:Process.in_str_topClick_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_topClick_name>
+  <this:Process.in_str_regionGov_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_regionGov_name>
+  <this:Process.in_str_TransactionItem_etc_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_str_TransactionItem_etc_name>
+  <this:Process.in_yearEdit_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_yearEdit_name>
+  <this:Process.in_sheetName_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_sheetName_name>
+  <this:Process.in_result_filePath_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_result_filePath_name>
+  <this:Process.in_quest_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_quest_name>
+  <this:Process.in_list_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_list_name>
+  <this:Process.in_etc_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_etc_name>
+  <this:Process.in_condition_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_condition_name>
+  <this:Process.in_resultCell_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_resultCell_name>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1532,4596.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1542.4,4532" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_part" />
+      <Variable x:TypeArguments="x:String" Name="Str_lastName_path" />
+      <Variable x:TypeArguments="x:String" Name="Str_finacialData_name" />
+      <Variable x:TypeArguments="x:String" Name="str_gov" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="List_date" />
+      <Variable x:TypeArguments="x:String" Name="str_Rest" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_yearCell" />
+      <Variable x:TypeArguments="x:String" Name="str_sheetName_edit" />
+      <Variable x:TypeArguments="x:String" Name="str_result_file_path" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list_etc" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_quest" />
+      <Variable x:TypeArguments="s:String[]" Name="strArr_columns" />
+      <Variable x:TypeArguments="s:String[]" Name="strArr_etc" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="List_str_filePath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list2" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list_etc2" />
+      <Variable x:TypeArguments="s:String[]" Name="strArr_resultcell" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_edit" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_item" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list_etc3" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_list3" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_etc_edit" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="List_yearMonth_date" />
+      <Variable x:TypeArguments="x:String" Name="str_sheet_preMonth" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_ks_replace_text_month" />
+      <Variable x:TypeArguments="x:String" Name="str_sheet_preYear" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="1500.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Sequence DisplayName="File down&amp;excel input Sequence" sap:VirtualizedContainerService.HintSize="1500.8,4134.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1459.2,444" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_Rest]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("Rest").ToString.Trim]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[StrArr_part]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_str_calssfication).ToString.Trim.Split(in_Greater_Than_Sign.ToCharArray)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[Str_lastName_path]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[StrArr_part.Last.ToString.Trim.Replace(in_slash,in_underscore)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[StrArr_yearCell]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_yearEdit_name).ToString.Trim.Split(str_Rest.ToCharArray)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_sheetName_edit]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem(in_sheetName_name).ToString.Trim.Replace(in_Config("yyyyMM_format").ToString.Trim,in_str_now_yyyyMM)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_result_file_path]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem(in_result_filePath_name).ToString.Trim.Replace(in_Config("yyyyMM_format").ToString.Trim,in_str_now_yyyyMM)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[StrArr_quest]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_quest_name).ToString.Trim.split(str_Rest.ToCharArray)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[strArr_columns]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_list_name).ToString.Trim.split(str_Rest.ToCharArray)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:String[]">[strArr_resultcell]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_resultCell_name).ToString.Trim.split(str_Rest.ToCharArray)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[List_date]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[New List(of String)from{}]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[List_str_filePath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[New List(of String)from{}]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[List_yearMonth_date]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[New List(of String)from{}]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem(in_etc_name).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="1459.2,341.6" sap2010:WorkflowViewState.IdRef="If_3">
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="304.8,152.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:String[]">[strArr_etc]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:String[]">[in_TransactionItem(in_etc_name).ToString.Trim.split(str_Rest.ToCharArray)]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <Sequence sap:VirtualizedContainerService.HintSize="1459.2,3176" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="Dt_etc_edit2" />
+          <Variable x:TypeArguments="sd:DataTable" Name="Dt_edit2" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 104_KS_openFiscalData_click workflow" sap:VirtualizedContainerService.HintSize="1417.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="100_Process KS\104_KS_openFiscalData_click.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Str_parentclass_attribute">[in_Config("parentclass_attribute").ToString.Trim]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Str_entrance_status">[in_Config("open").ToString.Trim]</InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_part">[StrArr_part]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Assign sap:VirtualizedContainerService.HintSize="1417.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[Str_finacialData_name]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_TransactionItem(in_str_finacitialName).ToString.Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  D46IFSSM0WKG88ISZ73U...'" sap:VirtualizedContainerService.HintSize="1417.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c7b11962-2ff3-4119-9b5c-5eb06f506d01" InformativeScreenshot="5411ff4cf4d3abb4a370c0bc44e8d3d1" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='열린재정 | 재정연구분석 | 재정상세통계 | 재정분석통계' /&gt;&lt;webctrl aria-role='treeitem' id='*' tag='A' aaname='{0}' innertext='{0}' parentid='*' /&gt;&quot;, Str_finacialData_name)]">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:Click.Target>
+        </ui:Click>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1417.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[Str_finacialData_name]" />
+        <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem(in_str_topClick_name).ToString.Trim)]" sap:VirtualizedContainerService.HintSize="1417.6,551.2" sap2010:WorkflowViewState.IdRef="If_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence sap:VirtualizedContainerService.HintSize="375.2,362.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_gov]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[StrArr_part(0).ToString.Trim]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  6K2VC056U3I7G523Q5JP...'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1b3fe2c2-4960-45e7-b407-68ca880e847f" InformativeScreenshot="2f9381ddd59c789f588ed4ba2fb14a94" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='열린재정 | 재정연구분석 | 재정상세통계 | 재정분석통계' /&gt;&lt;webctrl aria-role='treeitem' id='*' tag='A' aaname='{0}' innertext='{0}' parentid='*' /&gt;&quot;, str_gov)]">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+              <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Delay_2" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </If.Else>
+        </If>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// 파일 넣는 해당 경로에 yyyyMM형식에 이번년도및 월 폴더 생성" DisplayName="Invoke 105_KS_Create_Folder workflow" sap:VirtualizedContainerService.HintSize="1417.6,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="100_Process KS\105_KS_Create_Folder.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[in_TransactionItem(in_str_filePath_name).ToString.Trim]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_foramt__yyyyMM">[in_Config("yyyyMM_format").ToString.Trim]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// 최근년도 전년도 buildData 생성" DisplayName="Invoke 116_KS_buildData_transactionItem_list workflow" sap:VirtualizedContainerService.HintSize="1417.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="100_Process KS\116_KS_buildData_transactionItem_list.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_TransactionItem_regionGov">[in_TransactionItem(in_str_regionGov_name).ToString.Trim]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Rest">[in_Config("Rest").ToString.Trim]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list">[Dt_list]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list_etc">[Dt_list_etc]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list_etc2">[Dt_list_etc2]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list2">[Dt_list2]</OutArgument>
+            <OutArgument x:TypeArguments="s:String[]" x:Key="out_arr_ltem">[StrArr_item]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list3">[Dt_list3]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_list_etc3">[Dt_list_etc3]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// Data download 및 excel 계산" DisplayName="Invoke 106_KS_openFiscalData_download workflow" sap:VirtualizedContainerService.HintSize="1417.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="100_Process KS\106_KS_openFiscalData_download.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Str_statisticalCycle">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_str_staticTerm_name).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Str_yearly">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;statistical_cycle_y&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_year">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="in_StrArr_year" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_finacialData_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Str_finacialData_name" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_filePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_str_filePath_name).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_folder_date">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_now_yyyyMM" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_innertext_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;innertext_attribute&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_month_kr">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;month_kr&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_year_month_format">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;year_month_format&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_search_condition_open">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;search_condition_open&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_TransactionItem_regionGov">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_str_regionGov_name).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Rest">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Rest&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_TransactionItem_etc">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_condition_name).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_KS_result_list_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;KS_result_list_name&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_year_range">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="StrArr_yearCell" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_result_file_path">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_result_file_path" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_list_yearcell_edit">
+              <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="List_date" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_strArr_quest">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="StrArr_quest" />
+            </InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_strArr_columns">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="strArr_columns" />
+            </InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_strArr_etc">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="strArr_etc" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_condition">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_condition_name).ToString.Trim" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_List_str_filePath">
+              <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="List_str_filePath" />
+            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list2">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list2" />
+            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list_etc2">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list_etc2" />
+            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list" />
+            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list_etc">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list_etc" />
+            </InOutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_etc_edit">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_etc_edit" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_list_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;KS_result_list_name&quot;).ToString" />
+            </InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_edit">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_edit" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_quests_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StrArr_quest(0).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_arr_ltem">
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="StrArr_item" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list3">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list3" />
+            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_list_etc3">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_list_etc3" />
+            </InOutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_etc_edit2">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_etc_edit2" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_edit2">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="Dt_edit2" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_xlsx">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;xlsx&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_KS_Common_special_etc">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;KS_Common_special_etc&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_gov_check">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StrArr_part(0).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_middleGov">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;middleGov_name&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_sum_name">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;sum_name&quot;).ToString.Trim" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_TransactionItem_real_etc">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(in_etc_name).ToString.Trim" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <If sap2010:Annotation.AnnotationText="//통계주기 연간이면 진행" Condition="[in_TransactionItem(in_str_staticTerm_name).ToString.Trim = in_Config(&quot;statistical_cycle_y&quot;).ToString.Trim]" sap:VirtualizedContainerService.HintSize="1417.6,1391.2" sap2010:WorkflowViewState.IdRef="If_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence sap:VirtualizedContainerService.HintSize="900,884.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//전년도 컬럼 쓰기&#xA;" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="858.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheetName_edit]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//최근년도  컬럼 쓰기" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="858.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheetName_edit]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <If Condition="[strArr_resultcell.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="858.4,409.6" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="394.4,237.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// 일반 cell  + 기타 cell " DisplayName="Invoke 119_KS_result_dataInput workflow" sap:VirtualizedContainerService.HintSize="352.8,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="100_Process KS\119_KS_result_dataInput.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_result_path">[str_result_file_path]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_str_sheet">[str_sheetName_edit]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_etc_range">[strArr_resultcell(1).ToString.Trim]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_normal_range">[strArr_resultcell(0).ToString.Trim]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_etc_edit">[Dt_etc_edit]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_edit">[Dt_edit]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_str_TransactionItem_etc">[in_TransactionItem(in_etc_name).ToString.Trim]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="420,250.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//strArr_resultcell.Count = 1&#xA;// 기타 cell 이없음" DisplayName="Invoke 124_ks_result_dataInput_noEtc workflow" sap:VirtualizedContainerService.HintSize="378.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="100_Process KS\124_ks_result_dataInput_noEtc.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_str_sheet">[str_sheetName_edit]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_normal_range">[strArr_resultcell(0).ToString.Trim]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_edit">[Dt_edit]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_result_path">[str_result_file_path]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap:VirtualizedContainerService.HintSize="473.6,1200.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="s:String[]">[StrArr_ks_replace_text_month]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="s:String[]">[in_Config("ks_replace_text_month").ToString.Trim.Split(str_Rest.ToCharArray)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[str_sheet_preMonth]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem(in_sheetName_name).ToString.Trim.Replace(in_Config("ks_replace_text").ToString.Trim, StrArr_ks_replace_text_month(0).ToString.Trim).Replace(in_Config("yyyyMM_format").ToString.Trim, in_str_now_yyyyMM)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[str_sheet_preYear]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem(in_sheetName_name).ToString.Trim.Replace(in_Config("ks_replace_text").ToString.Trim, StrArr_ks_replace_text_month(1).ToString.Trim).Replace(in_Config("yyyyMM_format").ToString.Trim, in_str_now_yyyyMM)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//전년도 전월 컬럼 쓰기 (전월)&#xA;" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="432,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheet_preMonth]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//최근년도 최신월 컬럼 쓰기 (전월)&#xA;" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="432,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheet_preMonth]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//전년도 최신월 컬럼 쓰기 (전년도)&#xA;" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="432,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheet_preYear]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(2).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//최근년도 최신월 컬럼 쓰기 (전년도)&#xA;" DisplayName="Invoke 117_KS_result_input_edit workflow" sap:VirtualizedContainerService.HintSize="432,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="100_Process KS\117_KS_result_input_edit.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sheet_name">[str_sheet_preYear]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_range">[StrArr_yearCell(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_yearcell_edit">[List_date(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[str_result_file_path]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 123_KS_result_dataInput_month workflow" sap:VirtualizedContainerService.HintSize="432,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="100_Process KS\123_KS_result_dataInput_month.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_result_path">[str_result_file_path]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_sheet_preMonth">[str_sheet_preMonth]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_normal_range">[strArr_resultcell(0).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_edit">[Dt_edit]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_etc_range">[strArr_resultcell(1).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_etc_edit">[Dt_etc_edit]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_etc_edit2">[Dt_etc_edit2]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Dt_edit2">[Dt_etc_edit]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_TransactionItem_Condition">[in_TransactionItem(in_condition_name).ToString.Trim]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_sheet_preYear">[str_sheet_preYear]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Else>
+        </If>
+      </Sequence>
+    </Sequence>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="1500.8,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+  </Sequence>
+</Activity>

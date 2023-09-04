@@ -1,0 +1,314 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ACME_Workitem_TaxId" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_acme_url" Type="InArgument(x:String)" />
+    <x:Property Name="in_workitem" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrArr_WorkItem_Column" Type="InArgument(s:String[])" />
+    <x:Property Name="in_DT_workitem_edit" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_Str_REST" Type="InArgument(x:String)" />
+    <x:Property Name="in_Str_Colone" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_workitem_detail" Type="InArgument(s:String[])" />
+    <x:Property Name="in_str_workitem_excel_url" Type="InArgument(x:String)" />
+    <x:Property Name="in_sheetname_workitem_edit" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:ACME_Workitem_TaxId.in_acme_url>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_acme_url>
+  <this:ACME_Workitem_TaxId.in_workitem>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_workitem>
+  <this:ACME_Workitem_TaxId.in_StrArr_WorkItem_Column>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:ACME_Workitem_TaxId.in_StrArr_WorkItem_Column>
+  <this:ACME_Workitem_TaxId.in_DT_workitem_edit>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:ACME_Workitem_TaxId.in_DT_workitem_edit>
+  <this:ACME_Workitem_TaxId.in_Str_REST>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_Str_REST>
+  <this:ACME_Workitem_TaxId.in_Str_Colone>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_Str_Colone>
+  <this:ACME_Workitem_TaxId.in_str_workitem_detail>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:ACME_Workitem_TaxId.in_str_workitem_detail>
+  <this:ACME_Workitem_TaxId.in_str_workitem_excel_url>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_str_workitem_excel_url>
+  <this:ACME_Workitem_TaxId.in_sheetname_workitem_edit>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ACME_Workitem_TaxId.in_sheetname_workitem_edit>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>908,2460</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ACME_Workitem_TaxId_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="// workitem vendor information (TaxID,Name,Address,City) 추출하여 in_DT_workitem_edit 컬럼 Row에 값 할당" DisplayName="ACME_Workitem_VendorInformation_output" sap:VirtualizedContainerService.HintSize="624,2916" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_WiidNum" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_workitem_detail" />
+      <Variable x:TypeArguments="x:String" Name="str_edit" />
+      <Variable x:TypeArguments="x:String" Name="Str_Taxid" />
+      <Variable x:TypeArguments="x:String" Name="Str_Name" />
+      <Variable x:TypeArguments="x:String" Name="Str_Address" />
+      <Variable x:TypeArguments="x:String" Name="Str_City" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="582.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ACME_Workitem_VendorInformation_output START&quot;]" />
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="// StrArr_workitem_detail =  in_str_workitem_detail&#xD;&#xA;&#xD;&#xA;// Str_Taxid = StrArr_workitem_detail(0).ToString.Trim+in_Str_Colone.Trim&#xD;&#xA;&#xD;&#xA;// Str_Name = StrArr_workitem_detail(1).ToString.Trim+in_Str_Colone.Trim&#xD;&#xA;&#xD;&#xA;// Str_Address = StrArr_workitem_detail(2).ToString.Trim+in_Str_Colone.Trim&#xD;&#xA;&#xD;&#xA;// Str_City = StrArr_workitem_detail(3).ToString.Trim+in_Str_Colone.Trim" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="582.4,430.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:String[]">[StrArr_workitem_detail]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:String[]">[in_str_workitem_detail]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Str_Taxid]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[StrArr_workitem_detail(0).ToString.Trim+in_Str_Colone.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Str_Name]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[StrArr_workitem_detail(1).ToString.Trim+in_Str_Colone.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Str_Address]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[StrArr_workitem_detail(2).ToString.Trim+in_Str_Colone.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Str_City]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[StrArr_workitem_detail(3).ToString.Trim+in_Str_Colone.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="582.4,1415.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="72a37e256d892992805ffea3031a1abb" Selector="&lt;html app='chrome.exe' title='ACME System 1 - *' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="548.8,1268" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DT_workitem_edit]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="507.2,1175.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473.6,1059.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="str_info" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[str_WiidNum]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[CurrentRow(in_StrArr_WorkItem_Column(0).ToString.Trim).ToString.Trim]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="432,60" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[Path.Combine(in_acme_url+in_workitem, str_WiidNum.Trim)]" />
+                    <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="432,22.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'P'" sap:VirtualizedContainerService.HintSize="432,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                      <ui:GetValue.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="add47c73-6f56-4f71-b958-197f0ea11bbf" InformativeScreenshot="4c209a06ad486d7e776b0b8aa42c6c9e" Selector="&lt;webctrl tag='P' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:GetValue.Target>
+                      <ui:GetValue.Value>
+                        <OutArgument x:TypeArguments="x:String">[str_info]</OutArgument>
+                      </ui:GetValue.Value>
+                    </ui:GetValue>
+                    <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="432,22.4" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="// StrArr_workitem_detail= {TaxID,Name,Address,City}(0,1,2,3)으로 &#xD;&#xA;컬럼명을 가져와 VENDOR INFORMATION SPLIT해서 할당&#xD;&#xA;&#xD;&#xA;//CurrentRow(StrArr_workitem_detail(0).ToString.Trim) = str_info.Trim.Split({Str_Taxid, Str_Name},StringSplitOptions.RemoveEmptyEntries)(0)&#xD;&#xA;&#xD;&#xA;//CurrentRow(StrArr_workitem_detail(1).ToString.Trim)= str_info.Trim.Split({Str_Name, Str_Address},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim&#xD;&#xA;&#xD;&#xA;//CurrentRow(StrArr_workitem_detail(2).ToString.Trim) = str_info.Trim.Split({Str_Address, Str_City},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim&#xD;&#xA;&#xD;&#xA;//CurrentRow(StrArr_workitem_detail(3).ToString.Trim) = str_info.Trim.Split({Str_City},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,494.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Object">[CurrentRow(StrArr_workitem_detail(0).ToString.Trim)]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_info.Trim.Split({Str_Taxid, Str_Name},StringSplitOptions.RemoveEmptyEntries)(0)]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Object">[CurrentRow(StrArr_workitem_detail(1).ToString.Trim)]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_info.Trim.Split({Str_Name, Str_Address},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Object">[CurrentRow(StrArr_workitem_detail(2).ToString.Trim)]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_info.Trim.Split({Str_Address, Str_City},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Object">[CurrentRow(StrArr_workitem_detail(3).ToString.Trim)]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_info.Trim.Split({Str_City},StringSplitOptions.RemoveEmptyEntries)(1).ToString.Trim]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:MultipleAssign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="582.4,290.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_str_workitem_excel_url]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[in_DT_workitem_edit]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_sheetname_workitem_edit]" StartingCell="A1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:OutputDataTable sap2010:Annotation.AnnotationText="//VENDOR INFORMATION SPLIT한 내용이 해당 컬럼 ROW에 할당됬는지 CHECK" DataTable="[in_DT_workitem_edit]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="582.4,124.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[str_edit]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:OutputDataTable>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="582.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[str_edit]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="582.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;ACME_Workitem_VendorInformation_output END&quot;]" />
+  </Sequence>
+</Activity>

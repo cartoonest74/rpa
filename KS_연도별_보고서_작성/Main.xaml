@@ -1,0 +1,667 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1424.8,1629.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="1435.2,1564.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_config_url" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Dic_config" />
+      <Variable x:TypeArguments="x:String" Name="Str_username" />
+      <Variable x:TypeArguments="ss:SecureString" Name="Secure_pw" />
+      <Variable x:TypeArguments="x:Boolean" Name="Bln_login_check" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_workitem_column" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_workitem_edit" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_workitem" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_workitem_detail" />
+      <Variable x:TypeArguments="x:Boolean" Name="Bln_none_excel" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_YearlyReport_except_brace" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_month_name_eng" />
+      <Variable x:TypeArguments="x:Boolean" Name="Bln_montly_down" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_TaxId" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_month_clone" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_Wiid" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_new_status" />
+      <Variable x:TypeArguments="s:String[]" Name="StrArr_KsvendorBodyList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="Lst_yearly_files" />
+      <Variable x:TypeArguments="x:String" Name="Str_previos_year" />
+      <Variable x:TypeArguments="ss:SecureString" Name="Secure_nemail_pw" />
+      <Variable x:TypeArguments="x:String" Name="Str_nemail_username" />
+      <Variable x:TypeArguments="x:String" Name="Str_result_edit_url" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,42.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,117.7 300,167.7</av:PointCollection>
+        <x:Double x:Key="Width">1401.2627988506117</x:Double>
+        <x:Double x:Key="Height">1528.3999999999999</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID11</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID11">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,167.7</av:Point>
+          <av:Size x:Key="ShapeSize">200,112.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,280.5 300,330.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence sap2010:Annotation.AnnotationText="// str_config_url = &quot;C:\RPA\Config\Config_TypeA.xlsx&quot;" DisplayName="Init" sap:VirtualizedContainerService.HintSize="200,112.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[str_config_url]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">C:\RPA\Config\Config_TypeA.xlsx</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,330.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,176.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,507.3 300,557.3</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="// Invoke CONFIG_EXCEL_READ workflow&#xA;// Invoke ACME_WINDOW_CREDENTIAL workflow" DisplayName="STEP 0_ CofigExcel_Read" sap:VirtualizedContainerService.HintSize="200,176.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// Config EXXCEL&#xA;" DisplayName="Invoke CONFIG_EXCEL_READ workflow" sap:VirtualizedContainerService.HintSize="378.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="000_Process_Common\001_CONFIG_EXCEL_READ.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_config_excel_url">[str_config_url]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dic_config">[Dic_config]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// CREDENTIAL (ACME_accout, NAVER_Email_accout)" DisplayName="Invoke WINDOW_CREDENTIAL workflow" sap:VirtualizedContainerService.HintSize="378.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="000_Process_Common\002_WINDOW_CREDENTIAL.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_acme_account">[Dic_config("ACME_Account").ToString.Trim]</InArgument>
+                <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_pw">[Secure_pw]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_username">[Str_username]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_Str_nemail_username">[Str_nemail_username]</OutArgument>
+                <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Secure_neamil_pw">[Secure_nemail_pw]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NaverEmail_account">[Dic_config("NAVER_Email_account").ToString.Trim]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,557.3</av:Point>
+                  <av:Size x:Key="ShapeSize">200,112.8</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">300,670.1 300,720.1</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence sap2010:Annotation.AnnotationText="//Invoke ACME_INIT workflow" DisplayName="STEP 0_ ACME_INIT" sap:VirtualizedContainerService.HintSize="200,112.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_INIT workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="200_Process_ACME\201_ACME_INIT.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_workitem_column">[StrArr_workitem_column]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_REST">[Dic_config("Rest").ToString.Trim]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_str_workitem_column">[Dic_config("work_items_column").ToString.Trim]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_str_workitem_detail">[Dic_config("workitem_detail").ToString.Trim]</InArgument>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_workitem_detail">[StrArr_workitem_detail]</OutArgument>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_month_name_eng">[StrArr_month_name_eng]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_StrArr_month_name_eng">[Dic_config("month_name_eng").ToString.Trim]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_YearlyReport_save_name">[Dic_config("YearlyReport_save_name").ToString.Trim]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_left_brace">[Dic_config("left_brace").ToString.Trim]</InArgument>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_YearlyReport_brace_except">[StrArr_YearlyReport_except_brace]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_right_brace">[Dic_config("right_brace").ToString.Trim]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_new_stauts">[Dic_config("new_status").ToString.Trim]</InArgument>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_new_status">[StrArr_new_status]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_KS_VENDOR_BodyList">[Dic_config("KS_VENDOR_BodyList").ToString.Trim]</InArgument>
+                    <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_KSvendorBodyList">[StrArr_KsvendorBodyList]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_Str_previos_year">[Str_previos_year]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">200,720.1</av:Point>
+                      <av:Size x:Key="ShapeSize">200,144.8</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">400,792.5 430,792.5 430,686.4 580,686.4 580,716.4</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap2010:Annotation.AnnotationText="//Invoke ACME_OPEN workflow&#xA;//Invoke ACME_LoginCheck workflow" DisplayName="STEP 1_ ACME 시스템 접속" sap:VirtualizedContainerService.HintSize="200,144.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="345.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;STEP 1_ ACME 시스템 접속 START&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_OPEN workflow" sap:VirtualizedContainerService.HintSize="345.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="200_Process_ACME\202_ACME_OPEN.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_LoginCheck workflow" sap:VirtualizedContainerService.HintSize="345.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="200_Process_ACME\204_ACME_LoginCheck.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_login_check">[Bln_login_check]</OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="345.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;STEP 1_ ACME 시스템 접속 END&quot;]" />
+                  </Sequence>
+                  <FlowStep.Next>
+                    <FlowDecision x:Name="__ReferenceID3" Condition="[Bln_login_check]" DisplayName="ACME_LoginCheck" sap:VirtualizedContainerService.HintSize="106.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">526.8,716.4</av:Point>
+                          <av:Size x:Key="ShapeSize">106.4,87.2</av:Size>
+                          <av:PointCollection x:Key="TrueConnector">526.8,760 510,760 510,893.6</av:PointCollection>
+                          <av:PointCollection x:Key="FalseConnector">633.2,760 770,760 770,728.4</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <FlowDecision.True>
+                        <FlowStep x:Name="__ReferenceID4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">410,893.6</av:Point>
+                              <av:Size x:Key="ShapeSize">200,112.8</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">610,950 770,950 770,728.4</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_LOGIN workflow" DisplayName="STEP 1.5_ ACME_Login" sap:VirtualizedContainerService.HintSize="200,112.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_LOGIN workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="200_Process_ACME\203_ACME_LOGIN.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_username">[Str_username]</InArgument>
+                                <InArgument x:TypeArguments="ss:SecureString" x:Key="in_pw">[Secure_pw]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID0">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">670,551.6</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,176.8</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">770,551.6 770,501.6</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_WORKTIME_ExtractDatatable workflow&#xA;// Invoke ACME_WORKITEM_EXCEL_WRITE workflow" DisplayName="STEP 2_ WorkItem Search" sap:VirtualizedContainerService.HintSize="200,176.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;STEP 2_ WORKITEM Search START&quot;]" />
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_WORKTIME_ExtractDatatable workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="200_Process_ACME\205_ACME_WORKTITEM_ExtractDatatable.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_work_items">[Dic_config("work_items").ToString.Trim]</InArgument>
+                                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_workitem">[DT_workitem]</OutArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// WORITEM DATASCRAPT Filter -&gt; workitem_edit 생성" DisplayName="Invoke ACME_WORKITEM_EXCEL_WRITE workflow" sap:VirtualizedContainerService.HintSize="378.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="100_Process_Excel\101_ACME_WORKITEM_EXCEL_FilterWrite.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_workitem_excel">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem">[DT_workitem]</InArgument>
+                                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_workitem_edit">[DT_workitem_edit]</OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_REST">[Dic_config("Rest").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_workitem_column">[StrArr_workitem_column]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_sheetname_workitem_edit">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_sheetname_workitem">[Dic_config("work_item_sheetname").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ACME_Filter_wiid">[Dic_config("ACME_Filter_wiid").ToString.Trim]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ACME_Filter_status">[Dic_config("ACME_Filter_status").ToString.Trim]</InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InvokeWorkflowFile>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;STEP 2_ WORKITEM Search END&quot;]" />
+                              </Sequence>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID9">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">670,197.6</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,304.8</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">770,197.6 770,167.6 1060,167.6 1060,205.6</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence sap2010:Annotation.AnnotationText="//Invoke ACME_Add_data_Column workflow&#xA;//Invoke ACME_Workitem_TaxId workflow&#xA;//Invoke ACME_StrArr_workitem workflow&#xA;//Invoke ACME_download_montly_report_download workflow workflow&#xA;" DisplayName="STEP 3_ Data Download" sap:VirtualizedContainerService.HintSize="200,304.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;STEP 3_ Data Download START&quot;]" />
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//WORKITEM DATA TABLE에 컬럼 추가 (TaxID,Name,Address,City,Confirmation_ID,FilePath)" DisplayName="Invoke ACME_Add_data_Column workflow" sap:VirtualizedContainerService.HintSize="378.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="200_Process_ACME\206_ACME_Add_data_Column.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_workitem_detail">[StrArr_workitem_detail]</InArgument>
+                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_workitem_edit">[DT_workitem_edit]</InOutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_Confirmation_ID">[Dic_config("Confirmation_ID").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_FilePath">[StrArr_KsvendorBodyList(StrArr_KsvendorBodyList.Count-1).ToString.Trim]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//// workitem vendor information (TaxID,Name,Address,City) 추출하여 in_DT_workitem_edit 컬럼 Row에 값 할당" DisplayName="Invoke ACME_Workitem_VendorInformation_output" sap:VirtualizedContainerService.HintSize="378.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="200_Process_ACME\207_ACME_Workitem_VendorInformation_output.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_workitem">[Dic_config("work_items").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_WorkItem_Column">[StrArr_workitem_column]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem_edit">[DT_workitem_edit]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_REST">[Dic_config("Rest").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_Colone">[Dic_config("Colone").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_str_workitem_detail">[StrArr_workitem_detail]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_str_workitem_excel_url">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_sheetname_workitem_edit">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//work items 엑셀 파일&#xA;컬럼(wiid, taxid) string array로 따로 빼내서 생성&#xA;//month-report excel 파일 양식을 따기위해 month clone 생성" DisplayName="Invoke ACME_StrArr_workitem workflow" sap:VirtualizedContainerService.HintSize="378.4,189.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="200_Process_ACME\208_ACME_StrArr_workitem.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_workitem_excel_url">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_workitem_edit_sheetname">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_workitem_edit">[DT_workitem_edit]</OutArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_YearlyReport_except">[StrArr_YearlyReport_except_brace]</InArgument>
+                                        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_TaxId">[StrArr_TaxId]</OutArgument>
+                                        <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_Wiid">[StrArr_Wiid]</OutArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_workitem_column">[StrArr_workitem_column]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Monthly_Report_save_url">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_month_clone">[DT_month_clone]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="// TaxId 별 Folder 생성 &#xA;// montly report file download후 생성된 TaxId 폴더에 저장 &#xA;" DisplayName="Invoke ACME_download_montly_report_download workflow workflow" sap:VirtualizedContainerService.HintSize="378.4,173.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="200_Process_ACME\209_ACME_download_montly_report_download workflow.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_download_montly_report">[Dic_config("download_montly_report").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_TaxId">[StrArr_TaxId]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_previos_year">[Str_previos_year]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Monthly_Report_save_url">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_csv">[Dic_config("csv").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyReport_save_name">[Dic_config("YearlyReport_save_name").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_left_brace">[Dic_config("left_brace").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_right_brace">[Dic_config("right_brace").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_month_name_eng">[StrArr_month_name_eng]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;STEP 3_ Data Download END&quot;]" />
+                                  </Sequence>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID5">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">960,205.6</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,128.8</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">1060,334.4 1060,384.4</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_montly_report_merge workflow" DisplayName="STEP 4_ Data 병합" sap:VirtualizedContainerService.HintSize="200,128.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;STEP 4_ Data 병합 START&quot;]" />
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_montly_report_merge workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="100_Process_Excel\102_ACME_montly_report_merge.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_monthly_save_url">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem_edit">[DT_workitem_edit]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_montly_save_u">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_yearly_report_template_name">[Dic_config("yearly_report_template_name").ToString.Trim]</InArgument>
+                                            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_YearlyReport_except">[StrArr_YearlyReport_except_brace]</InArgument>
+                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_montly_clone">[DT_month_clone]</InArgument>
+                                            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_Taxid">[StrArr_TaxId]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_hyphen">[Dic_config("hyphen").ToString.Trim]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_left_brace">[Dic_config("left_brace").ToString.Trim]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_right_brace">[Dic_config("right_brace").ToString.Trim]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
+                                        </ui:InvokeWorkflowFile>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;STEP 4_ Data 병합 END&quot;]" />
+                                      </Sequence>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID6">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">960,384.4</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,176.8</av:Size>
+                                              <av:PointCollection x:Key="ConnectorLocation">1060,561.2 1060,611.2</av:PointCollection>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_YEARLY_EXCEL_UPLOAD workflow&#xA;// Invoke ACME_WriteRead_Excel workflow" DisplayName="STEP 5_  엑셀 파일 업로드" sap:VirtualizedContainerService.HintSize="200,176.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;STEP 5_  엑셀 파일 업로드 START&quot;]" />
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_YEARLY_EXCEL_UPLOAD workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="200_Process_ACME\210_ACME_YEARLY_EXCEL_UPLOAD.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_uploadYearlyReport_url">[Dic_config("upload_yearly_report").ToString.Trim]</InArgument>
+                                                <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_TaxId">[StrArr_TaxId]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Monthly_Report_save_url">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_is">[Dic_config("is").ToString.Trim]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_Confirmation_ID">[Dic_config("Confirmation_ID").ToString.Trim]</InArgument>
+                                                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_Lst_yearly_files">[Lst_yearly_files]</OutArgument>
+                                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem_edit">[DT_workitem_edit]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_previos_year">[Str_previos_year]</InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_WriteRead_Excel workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="100_Process_Excel\103_ACME_WriteRead_Excel.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_work_items_excel">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Str_work_item_edit_sheetname">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_workitem_edit">[DT_workitem_edit]</InOutArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;STEP 5_  엑셀 파일 업로드 END&quot;]" />
+                                          </Sequence>
+                                          <FlowStep.Next>
+                                            <FlowStep x:Name="__ReferenceID7">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">960,611.2</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,288</av:Size>
+                                                  <av:PointCollection x:Key="ConnectorLocation">1060,899.2 1060,949.2</av:PointCollection>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_add_FilePath workflow&#xA;// Invoke ACME_WriteRead_Excel workflow&#xA;// Invoke ACME_Workitem_Update workflow&#xA;// Invoke CLOSE_APPLICATION workflow&#xA;" DisplayName="STEP 6_ TAX ID값 등록" sap:VirtualizedContainerService.HintSize="200,288" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;STEP 6_ TAX ID값 등록 START&quot;]" />
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//work item coulmn file path에 yearly report  excel주소넣기" DisplayName="Invoke ACME_add_FilePath workflow" sap:VirtualizedContainerService.HintSize="378.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="200_Process_ACME\211_ACME_add_FilePath.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_FilePath">[StrArr_KsvendorBodyList(StrArr_KsvendorBodyList.Count - 1).ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_Lst_yearly_files">[Lst_yearly_files]</InArgument>
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_workitem_detail">[StrArr_workitem_detail]</InArgument>
+                                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_workitem_edit">[DT_workitem_edit]</InOutArgument>
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:InvokeWorkflowFile>
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_WriteRead_Excel workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="100_Process_Excel\103_ACME_WriteRead_Excel.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_work_items_excel">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_work_item_edit_sheetname">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+                                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DT_workitem_edit">[DT_workitem_edit]</InOutArgument>
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                </ui:InvokeWorkflowFile>
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_Workitem_Update workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="200_Process_ACME\212_ACME_Workitem_Update.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_acme_url">[Dic_config("ACME").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_work_update_url">[Dic_config("workitems_update").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_Wiid">[StrArr_Wiid]</InArgument>
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_new_stauts">[StrArr_new_status]</InArgument>
+                                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem_edit">[DT_workitem_edit]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_Confirmation_ID">[Dic_config("Confirmation_ID").ToString.Trim]</InArgument>
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                </ui:InvokeWorkflowFile>
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="//CHROME CLOSE " DisplayName="Invoke CLOSE_APPLICATION workflow" sap:VirtualizedContainerService.HintSize="378.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="200_Process_ACME\213_CLOSE_APPLICATION.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:InvokeWorkflowFile>
+                                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_KSVENDOR_EXCEL_UPLOAD workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="100_Process_Excel\104_ACME_KSVENDOR_EXCEL_UPLOAD.xaml">
+                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_ksvendor_BodyRange">[Dic_config("KS_VENDOR_BodyRange").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_ksvendor_headRange">[Dic_config("KS_VENDOR_HeaderRange").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_KSVENDOR_template_url">[Dic_config("KS_vendor_template_url").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_workitem_edit">[DT_workitem_edit]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_KS_vendor_save_name">[Dic_config("KS_vendor_save_name").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_yearly_report_except_brace">[StrArr_YearlyReport_except_brace]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_previos_year">[Str_previos_year]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_left_brace">[Dic_config("left_brace").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_right_brace">[Dic_config("right_brace").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_result_url">[Dic_config("result_url").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_xlsx">[Dic_config("xlsx").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_KS_VENDOR_HeadList">[Dic_config("KS_VENDOR_HeadList").ToString.Trim]</InArgument>
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_wiid">[StrArr_Wiid]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Str_no">[StrArr_KsvendorBodyList(0).ToString.Trim]</InArgument>
+                                                    <OutArgument x:TypeArguments="x:String" x:Key="out_Str_result_edit_url">[Str_result_edit_url]</OutArgument>
+                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                </ui:InvokeWorkflowFile>
+                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;STEP 6_ TAX ID값 등록 END&quot;]" />
+                                              </Sequence>
+                                              <FlowStep.Next>
+                                                <FlowStep x:Name="__ReferenceID8">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <av:Point x:Key="ShapeLocation">960,949.2</av:Point>
+                                                      <av:Size x:Key="ShapeSize">200,176.8</av:Size>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Sequence sap2010:Annotation.AnnotationText="// Invoke ACME_KSVENDOR_EXCEL_UPLOAD workflow&#xA;// Invoke SEND_MAIL workflow&#xA;" DisplayName="STEP 7_ 결과 파일 전송" sap:VirtualizedContainerService.HintSize="200,176.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;STEP 7_ 결과 파일 전송 START&quot;]" />
+                                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SEND_MAIL workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="300_Process_Mail\301_SEND_MAIL.xaml">
+                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_secure_nemail_pw">[Secure_nemail_pw]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_nemail_username">[Str_nemail_username]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_email_title">[Dic_config("Title").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_LeftBrace">[Dic_config("left_brace").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_RightBrace">[Dic_config("right_brace").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_nemail_subject">[Dic_config("Body").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_LeftBracket">[Dic_config("left_bracket").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_RightBracket">[Dic_config("right_bracket").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_previos_year">[Str_previos_year]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_result_edit_url">C:\RPA\Result\KS Vendor Information 2021 Yearly Report.xlsx</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_To">[Dic_config("To").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_From_name">[Dic_config("From").ToString.Trim]</InArgument>
+                                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Str_port_num">[CInt(Dic_config("nemail_SmpPort").ToString.Trim)]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Str_sever">[Dic_config("nemail_SmtpSeverName").ToString.Trim]</InArgument>
+                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                    </ui:InvokeWorkflowFile>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;STEP 7_ 결과 파일 전송 END&quot;]" />
+                                                  </Sequence>
+                                                </FlowStep>
+                                              </FlowStep.Next>
+                                            </FlowStep>
+                                          </FlowStep.Next>
+                                        </FlowStep>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowDecision.True>
+                      <FlowDecision.False>
+                        <x:Reference>__ReferenceID0</x:Reference>
+                      </FlowDecision.False>
+                    </FlowDecision>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <FlowDecision sap2010:Annotation.AnnotationText="WORKITEM DATASCRAPT CHECK&#xA;" Condition="[Bln_none_excel AND Bln_montly_down]" DisplayName="NONE_EXCEL_CEHCK" sap:VirtualizedContainerService.HintSize="120,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <av:Point x:Key="ShapeLocation">120,1066.4</av:Point>
+          <av:Size x:Key="ShapeSize">120,87.2</av:Size>
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </FlowDecision>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">100,955.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="WORKITEM DATA CHEKC" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_WORKITEM_CHECK workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="200_Process_ACME\ACME_WORKITEM_CHECK.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_work_items_excel">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Bln_none_excel">[Bln_none_excel]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_workitem_excel_url">[Dic_config("work_items_excel").ToString.Trim]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_workitem_edit_sheetname">[Dic_config("work_item_edit_sheetname").ToString.Trim]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_workitem_edit">[DT_workitem_edit]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Monthly_Report_save_url">[Dic_config("Monthly_Report_save_url").ToString.Trim]</InArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Bln_montly_down">[Bln_montly_down]</OutArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_YearlyReport_except">[StrArr_YearlyReport_except_brace]</InArgument>
+            <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_TaxId">[StrArr_TaxId]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT_month_clone">[DT_month_clone]</OutArgument>
+            <OutArgument x:TypeArguments="s:String[]" x:Key="out_StrArr_Wiid">[StrArr_Wiid]</OutArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_StrArr_workitem_column">[StrArr_workitem_column]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+    </FlowStep>
+  </Flowchart>
+</Activity>
